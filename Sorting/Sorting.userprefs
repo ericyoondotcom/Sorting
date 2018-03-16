@@ -2,7 +2,7 @@
   <MonoDevelop.Ide.Workbench ActiveDocument="Sorting/MySorter.cs">
     <Files>
       <File FileName="Sorting/Program.cs" Line="5" Column="20" />
-      <File FileName="Sorting/MySorter.cs" Line="1" Column="1" />
+      <File FileName="Sorting/MySorter.cs" Line="7" Column="13" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />

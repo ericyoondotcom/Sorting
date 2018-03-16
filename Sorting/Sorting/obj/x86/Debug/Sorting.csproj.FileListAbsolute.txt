@@ -1,0 +1,5 @@
+/Users/yooniverse/Documents/Sorting/Sorting/Sorting/bin/Debug/Sorting.exe
+/Users/yooniverse/Documents/Sorting/Sorting/Sorting/bin/Debug/Sorting.pdb
+/Users/yooniverse/Documents/Sorting/Sorting/Sorting/obj/x86/Debug/Sorting.csproj.CoreCompileInputs.cache
+/Users/yooniverse/Documents/Sorting/Sorting/Sorting/obj/x86/Debug/Sorting.exe
+/Users/yooniverse/Documents/Sorting/Sorting/Sorting/obj/x86/Debug/Sorting.pdb

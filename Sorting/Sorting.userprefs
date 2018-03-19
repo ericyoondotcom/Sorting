@@ -1,8 +1,8 @@
 ﻿<Properties StartupConfiguration="{0225BD64-F3F3-4DF4-A953-BFFC84964A1D}|Default">
   <MonoDevelop.Ide.Workbench ActiveDocument="Sorting/MySorter.cs">
     <Files>
-      <File FileName="Sorting/Program.cs" Line="5" Column="20" />
-      <File FileName="Sorting/MySorter.cs" Line="7" Column="13" />
+      <File FileName="Sorting/Program.cs" Line="23" Column="40" />
+      <File FileName="Sorting/MySorter.cs" Line="97" Column="17" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />

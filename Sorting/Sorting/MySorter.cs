@@ -85,20 +85,36 @@ namespace Sorting
 
             T[] sorted1 = MergeSort<T>(data.Take(data.Length / 2).ToArray(), c);
             T[] sorted2 = MergeSort<T>(data.Skip(data.Length / 2).ToArray(), c);
-            if (c(sorted1[0], sorted2[0]) <= 0)
-            {
-                T[] combined = new T[sorted1.Length + sorted2.Length];
-                sorted1.CopyTo(combined, 0);
-                sorted2.CopyTo(combined, sorted1.Length);
-                return combined;
+            T[] combined = new T[sorted1.Length + sorted2.Length];
+            int pos = 0;
+            int pos1 = 0;
+            int pos2 = 0;
+
+            while(pos < combined.Length){
+                if (pos2 >= sorted2.Length){
+                    combined[pos] = sorted1[pos1];
+                    pos1++;
+                }
+				else if (pos1 >= sorted1.Length)
+				{
+					combined[pos] = sorted2[pos2];
+					pos2++;
+				}
+				else if (c(sorted1[pos1], sorted2[pos2]) <= 0)
+				{
+					combined[pos] = sorted1[pos1];
+					pos1++;
+                }else{
+                    combined[pos] = sorted2[pos2];
+					pos2++;
+                }
+
+				
+                pos++;
             }
-            else
-            {
-                T[] combined = new T[sorted1.Length + sorted2.Length];
-                sorted2.CopyTo(combined, 0);
-                sorted1.CopyTo(combined, sorted2.Length);
-                return combined;
-            }
+
+            return combined;
+
         }
     }
 }

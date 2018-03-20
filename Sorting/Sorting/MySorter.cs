@@ -137,6 +137,7 @@ namespace Sorting
 
             while(wallPos < data.Length - 1){
                 if(c(data[wallPos + 1], pivot) <= 0){
+                    wallPos++;
                     continue;
                 }
                 if(wallPos + 2 >= data.Length){
@@ -156,10 +157,10 @@ namespace Sorting
                     }
                 }
                 if (breakOut) break;
-
+                wallPos++;
             }
 
-            return QuickSort(data.Take(wallPos).ToArray(), c).Concat(new T[1] { pivot }).Concat(data.Skip(wallPos + 1)).ToArray<T>();
+            return QuickSort(data.Take(wallPos).ToArray(), c).Concat(new T[1] { pivot }).Concat(QuickSort(data.Skip(wallPos + 1).ToArray(), c)).ToArray<T>();
             
         }
     }

@@ -116,5 +116,51 @@ namespace Sorting
             return combined;
 
         }
+
+        public static T[] QuickSort<T>(T[] data, Comparison<T> c){
+            if(data.Length == 1){
+                return data;
+            }
+            if(data.Length == 2){
+                if(c(data[0], data[1]) > 0){
+                    T swap = data[0];
+                    data[0] = data[1];
+                    data[1] = swap;
+                    return data;
+                }else{
+                    return data;
+                }
+            }
+
+            T pivot = data[0];
+            int wallPos = 0; //since the pivot is at front
+
+            while(wallPos < data.Length - 1){
+                if(c(data[wallPos + 1], pivot) <= 0){
+                    continue;
+                }
+                if(wallPos + 2 >= data.Length){
+                    break;
+                }
+                bool breakOut = false;
+                for (int i = wallPos + 2; i <= data.Length; i++){
+                    if(i == data.Length){
+                        breakOut = true;
+                        break;
+                    }
+                    if(c(data[i], pivot) < 0){
+                        T swap = data[wallPos + 1];
+                        data[wallPos + 1] = data[i];
+                        data[i] = swap;
+                        break;
+                    }
+                }
+                if (breakOut) break;
+
+            }
+
+            return QuickSort(data.Take(wallPos).ToArray(), c).Concat(new T[1] { pivot }).Concat(data.Skip(wallPos + 1)).ToArray<T>();
+            
+        }
     }
 }

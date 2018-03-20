@@ -21,7 +21,7 @@ namespace Sorting
             Console.WriteLine("\n\n**************\n*            *\n* SORTING... *\n*            *\n**************\n");
             Console.ResetColor();
             Console.ForegroundColor = ConsoleColor.Cyan;
-            sortMe = MySorter.MergeSort(sortMe, (x, y) => x - y);
+            sortMe = MySorter.QuickSort(sortMe, (x, y) => x - y);
             foreach (int i in sortMe) Console.Write(i.ToString() + ", ");
 
         }

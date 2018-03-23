@@ -117,51 +117,37 @@ namespace Sorting
 
         }
 
-        public static T[] QuickSort<T>(T[] data, Comparison<T> c){
-            if(data.Length == 1){
+        public static T[] QuickSort<T>(T[] data, Comparison<T> c)
+        {
+            return QuickSort(data, c, 0, data.Length - 1);
+        }
+
+        private static T[] QuickSort<T>(T[] data, Comparison<T> c, int left, int right){
+            if (left >= right){
                 return data;
             }
-            if(data.Length == 2){
-                if(c(data[0], data[1]) > 0){
-                    T swap = data[0];
-                    data[0] = data[1];
-                    data[1] = swap;
-                    return data;
-                }else{
-                    return data;
-                }
-            }
 
-            T pivot = data[0];
-            int wallPos = 0; //since the pivot is at front
+            T pivot = data[left];
+            int wallPos = left; //since the pivot is at front
 
-            while(wallPos < data.Length - 1){
-                if(c(data[wallPos + 1], pivot) <= 0){
+            for (int i = left+1; i <= right; i++)
+            {
+                if (c(data[i], pivot) < 0)
+                {
+                    T swap = data[wallPos + 1];
+                    data[wallPos + 1] = data[i];
+                    data[i] = swap;
                     wallPos++;
-                    continue;
                 }
-                if(wallPos + 2 >= data.Length){
-                    break;
-                }
-                bool breakOut = false;
-                for (int i = wallPos + 2; i <= data.Length; i++){
-                    if(i == data.Length){
-                        breakOut = true;
-                        break;
-                    }
-                    if(c(data[i], pivot) < 0){
-                        T swap = data[wallPos + 1];
-                        data[wallPos + 1] = data[i];
-                        data[i] = swap;
-                        break;
-                    }
-                }
-                if (breakOut) break;
-                wallPos++;
             }
 
-            return QuickSort(data.Take(wallPos).ToArray(), c).Concat(new T[1] { pivot }).Concat(QuickSort(data.Skip(wallPos + 1).ToArray(), c)).ToArray<T>();
-            
+            T pivotSwap = data[wallPos];
+            data[wallPos] = data[left];
+            data[left] = pivotSwap;
+
+            data = QuickSort(data, c, left, wallPos - 1);
+            data = QuickSort(data, c, wallPos + 1, right);
+            return data;
         }
     }
 }
